@@ -1,22 +1,21 @@
 sudo: required
 services:
-    - docker
-
+- docker
 before_install:
-    - docker build -t railzakirov/docker-react -f Dockerfile.dev .
-
+- docker build -t railzakirov/docker-react -f Dockerfile.dev .
 script:
-    - docker run -e CI=true railzakirov/docker-react npm run test
-
+- docker run -e CI=true railzakirov/docker-react npm run test
 deploy:
-    edge: true
-    provider: elasticbeanstalk
-    region: "us-east-2"
-    app: "docker-react"
-    env: "DockerReact-env"
-    bucket_name: "elasticbeanstalk-us-east-2-724410206410"
-    bucket_path: "docker-react"
-    on: 
-        branch: master
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY  
+  edge: true
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: docker-react
+  env: DockerReact-env
+  bucket_name: elasticbeanstalk-us-east-2-724410206410
+  bucket_path: docker-react
+  on:
+    branch: master
+  access_key_id:
+    secure: SFvg5OSUS9P7WMbSLk0I0oRbtKTsq7W63EQ7YinrgVo3XyoDzCEdYd3md+0kr84Kw/vXUY0+4RHx0YY+Sg4QpXhmDRYwapECzZlrI9fSrQicvOq/tLE4atz1Z0tbSj4sqKOGNyfTlp9BIBOYuhCdyJ0+5S5EeMGoWqqVGN4ITP901VfRku8NHPck1St3b6FVNcN/wQcUYuOALo48We2HKcyfe5FqKY2XIsRQRjjC80a6tw9cCvMcnsa+bXqt4ZQIbTBm/4Kh+nbQk8wVTrs3rcQJlu0FMUyINIRxvdrqIOTbGXrYTdwdcPw35zth+BvUfeHnvgVw81o1zl/aG4fqSg+L/raSRRPD5N2m4091CLN1GiW4qUmuWKPdZAIH6UC9/fO/JizQd+8GmkAZti721UwkRcJJ3Qc3Eibdbfxjn3Mbhme4wVe1KucScedsWtBBpHwSJNlU35SuA57q/Ue7pzTwZc8tiY8SPxaoRCtZiW7BRwmeAn04DbppWX1gFG1MaZGCcZxMyYZyjnRX1+XgJJQLaEfJgrIqxsbc02pbI6WmgEPY7xP26fQDZVE+BYOAgHtHt4KOVJF0WEC1EQCRjbdQHKDhZUiCTzu8JA6FaOZLZZeTS0Kzrz9WcHtAH0uM36vU1uE+12uh5w6aeoysne1VjHAuoFkywq9Ws3zZgwg=
+  secret_access_key:
+    secure: fkwvh2oq8DlhuexwdICQNprV02BL7Di1L3853JdUhVXj/RiWMUlqCe8FIbnro13iH2JwQNgvn3jO2arowRbSSxtUhOGR8WJNTNgvCR0/2RhyDE7IulCsIQCW0OS3gaNvnWda0gN0EzkCx3Bu0X2fOBXHRnagUV6fuTCyoO4PBjG0SsMlcfv+NJKw7QJ1rjqqGDsOMDfrk94+dVUmcWJw5GMiQRfqzWAewGwflAE5xprfxB2zNPGJ/rcqK8sOHdND8XsUQenQ91AqZHIzapJ3GRonwrUvIeD9O/xcvLApaOevhCwydK1LuheJXyQfkHF5q7+Rbs9m0F/RYx81wAqPL3iWBXLY/6pC1VGLaBTac/pWiX9sbvR9ST+pwnDBDRT95p6eqSRDHzx4mVdHeMAFnZVs/BM3/rNFcLX78KJ10Mij1EKJtYR5gnl6t3Jauvrj5WL9SG4xp/hB6XTiZ9Pbd5Qs8xHoH+m3gZsHz3XWqURYOYN0UfWr4alMdj9UyC3hFr5uXUtjjtBiZXeMCvSPN0wM3pWrZeksHoaHYFQ+kd3cpsTQwymKFlmIlDwO7mgytA5GZKXFeJKUJVn40hPQ3LiJLRJ+EPmlU2WhGiaDzzE/zJM74ujr+eBpP4DFbJ9lwRF0IXGH7wupzA0CK/8p7PKDO1xym/3AQUsJIf2v2ss=
